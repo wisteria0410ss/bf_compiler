@@ -19,6 +19,9 @@ obj/%.o: src/%.c
 clean:
 	rm -f $(OBJS) $(DEPS) $(TARGET)
 
-.PHONY: all clean
+test: test/test.sh $(TARGET)
+	./$< && echo OK
+
+.PHONY: all clean test
 
 -include $(DEPS)
