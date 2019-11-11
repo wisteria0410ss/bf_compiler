@@ -1,3 +1,6 @@
+#ifndef CONTAINERS_H
+#define CONTAINERS_H
+
 #include <stddef.h>
 
 typedef struct{
@@ -7,3 +10,5 @@ typedef struct{
 string *string_init();
 void string_push(string *s, char c);
 void string_free(string *s);
+
+#endif

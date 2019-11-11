@@ -8,6 +8,6 @@ int main(){
     while((c = fgetc(stdin)) != EOF) string_push(s, c);
     printf("%s", s->buf);
     string_free(s);
-
+    
     return 0;
 }
