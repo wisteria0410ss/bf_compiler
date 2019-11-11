@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include "containers.h"
+#include "util.h"
 
 string *string_init(){
-    string *s = (string*)malloc(sizeof(string));
-    s->buf = (char*)malloc(sizeof(char)*16);
+    string *s = malloc(sizeof(*s));
+    if(s == NULL) error(ERR_ALLOC);
+    s->buf = malloc(sizeof(*s->buf)*16);
+    if(s->buf == NULL) error(ERR_ALLOC);
     s->buf[0] = 0;
     s->len = 16;
     s->cnt = 0;
@@ -14,7 +17,8 @@ string *string_init(){
 void string_push(string *s, char c){
     if(s->cnt + 1 >= s->len){
         s->len *= 2;
-        s->buf = (char*)realloc(s->buf, s->len);
+        s->buf = realloc(s->buf, s->len);
+        if(s->buf == NULL) error(ERR_ALLOC);
     }
     s->buf[s->cnt++] = c;
     s->buf[s->cnt] = 0;
