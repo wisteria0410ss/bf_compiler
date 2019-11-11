@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	= -MMD -MP -O2
+CFLAGS	= -MMD -MP -O2 -Wall -Wextra
 LDFLAGS	=
 
 TARGET 	= bin/bfc
