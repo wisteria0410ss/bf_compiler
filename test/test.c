@@ -6,25 +6,16 @@
 int main(){
     string *s = string_init();
     char src[] = "++--<><>,.asdpo2ほあ\nｓ<>/+[as<>/.}]";
+    char tok[] = "++--<><>,.<>+[<>.]";
     for(size_t i=0;src[i]!=0;++i) string_push(s, src[i]);
-    token *tk = tokenize(s), *cur = tk;
+    string *tk = tokenize(s);
 
-    token_type chk_type[] = {
-        TK_VAL, TK_VAL, TK_VAL, TK_VAL, TK_PTR, TK_PTR, TK_PTR, TK_PTR, TK_IO , TK_IO ,
-        TK_PTR, TK_PTR, TK_VAL, TK_LP , TK_PTR, TK_PTR, TK_IO , TK_LP , TK_EOF
-    };
-    int chk_val[] = {
-        1, 1, -1, -1, -1, 1, -1, 1, 1, 0, -1, 1, 1, 0, -1, 1, 0, 1, 0
-    };
-    for(size_t i=0;i<sizeof(chk_type)/sizeof(*chk_type);++i){
-        assert(cur != NULL);
-        assert(cur->type == chk_type[i]);
-        assert(cur->val == chk_val[i]);
-        cur = cur->next;
+    for(size_t i=0;i<sizeof(tok)/sizeof(tok[0]);++i){
+        assert(tok[i] == tk->buf[i]);
     }
 
     string_free(s);
-    token_free(tk);
+    string_free(tk);
 
     return 0;
 }
