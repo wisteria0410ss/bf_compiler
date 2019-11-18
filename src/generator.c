@@ -34,7 +34,7 @@ void generate_asm(FILE *fp, code_tree *tree){
 
     fprintf(fp, 
             "\tmov  rax, 0x3c\n"
-            "\txor  rdi, 0x00\n"
+            "\txor  rdi, rdi\n"
             "\tsyscall\n"
         );
 }
