@@ -49,10 +49,10 @@ void asm_loop(FILE *fp, code_tree *pos){
                 fprintf(fp, "\tdec  rbx\n");
                 break;
             case '+':
-                fprintf(fp, "\tinc  dword ptr [rbx]\n");
+                fprintf(fp, "\tinc  byte ptr [rbx]\n");
                 break;
             case '-':
-                fprintf(fp, "\tdec  dword ptr [rbx]\n");
+                fprintf(fp, "\tdec  byte ptr [rbx]\n");
                 break;
             case ',':
                 fprintf(fp, "\tcall read\n");
@@ -63,7 +63,7 @@ void asm_loop(FILE *fp, code_tree *pos){
             case '[':
                 fprintf(fp,
                     ".L%d:\n"
-                        "\tcmp  dword ptr [rbx], 0\n"
+                        "\tcmp  byte ptr [rbx], 0\n"
                         "\tje   .L%d_END\n",
                     pos->value, pos->value);
                 asm_loop(fp, pos->child);
