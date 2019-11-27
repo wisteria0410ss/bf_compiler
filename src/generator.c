@@ -119,7 +119,7 @@ void generate_elf(FILE *fp, code_tree *tree){
         16 +                // exit
     0xfff) / 0x1000 * 0x1000;
 
-    code_push(c, 7, 0x48, 0xc7, 0xc3,               // lea  rbx, [buf]
+    code_push(c, 7, 0x48, 0xc7, 0xc3,               // mov  rbx, [buf]
         p_data.b[0], p_data.b[1], p_data.b[2], p_data.b[3]);
 
     elf_loop(c, tree);
