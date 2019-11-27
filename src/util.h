@@ -6,6 +6,7 @@
 #define ERR_LEND 2
 #define ERR_FOPEN 3
 #define ERR_ARGS 4
+#define ERR_CHMOD 5
 
 void error(int err_type);
 

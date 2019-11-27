@@ -19,6 +19,9 @@ void error(int err_type){
     case ERR_ARGS:
         fprintf(stderr, "usage:\n\tbfc [-S] [-o outfile] infile\n");
         break;
+    case ERR_CHMOD:
+        fprintf(stderr, "failed to make the output file executable.\n");
+        break;
     default:
         fprintf(stderr, "unknown error\n");
         break;

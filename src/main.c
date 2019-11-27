@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "containers.h"
 #include "tokenizer.h"
 #include "parser.h"
@@ -62,7 +63,17 @@ int main(int argc, char **argv){
     }
 
     if(output_asm) generate_asm(fp_out, tree);
-    else generate_elf(fp_out, tree);
+    else{
+        generate_elf(fp_out, tree);
+        if(fp_out != stdout){
+            string *comm_str = string_init();
+            char comm[] = "chmod +x ";
+            for(size_t i=0;comm[i];++i) string_push(comm_str, comm[i]);
+            for(size_t i=0;i<fn_output->cnt;++i) string_push(comm_str, fn_output->buf[i]);
+            int info = system(comm_str->buf);
+            if(info != 0) error(ERR_CHMOD);
+        }
+    }
 
     if(fp_out != stdout) fclose(fp_out);
     
