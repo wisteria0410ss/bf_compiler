@@ -10,8 +10,9 @@ code_tree *node_new(code_tree *prev, char type){
     code_tree *ct = malloc(sizeof(code_tree));
     if(prev != NULL) prev->next = ct;
     ct->token_type = type;
-    if(type == '[') ct->code_length = 15;
+    if(type == '[') ct->code_length = 14;
     else if(type == ',' || type == '.') ct->code_length = 5;
+    else if(type == '+' || type == '-') ct->code_length = 2; 
     else ct->code_length = 3;
 
     return ct;
@@ -43,6 +44,7 @@ code_tree *parse(string *tokens){
 }
 
 void program(){
+    size_t len = 0;
     while(tk->buf[pos] != 0){
         if(tk->buf[pos] == ']') error(ERR_LEND);
         else if(tk->buf[pos] == '['){
@@ -50,13 +52,15 @@ void program(){
             ++pos;
             t->value = loop_cnt++;
             tail = t->child = node_begin();
-            t->code_length = 15 + loop();
+            t->code_length = 14 + loop();
             tail = t;
         }else{
             tail = node_new(tail, tk->buf[pos]);
             ++pos;
         }
+        len += tail->code_length;
     }
+    root->code_length = len;
 }
 
 size_t loop(){
@@ -68,7 +72,7 @@ size_t loop(){
             ++pos;
             t->value = loop_cnt++;
             tail = t->child = node_begin();
-            t->code_length = 15 + loop();
+            t->code_length = 14 + loop();
             tail = t;
         }else{
             tail = node_new(tail, tk->buf[pos]);

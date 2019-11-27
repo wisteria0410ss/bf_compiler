@@ -13,6 +13,9 @@ void error(int err_type){
     case ERR_LEND:
         fprintf(stderr, "too many \']\'s.\n");
         break;
+    case ERR_FOPEN:
+        fprintf(stderr, "failed to open the output file.\n");
+        break;
     default:
         fprintf(stderr, "unknown error\n");
         break;
