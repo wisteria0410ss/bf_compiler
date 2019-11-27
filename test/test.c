@@ -14,8 +14,5 @@ int main(){
         assert(tok[i] == tk->buf[i]);
     }
 
-    string_free(s);
-    string_free(tk);
-
     return 0;
 }

@@ -9,6 +9,5 @@ typedef struct{
 } string;
 string *string_init();
 void string_push(string *s, char c);
-void string_free(string *s);
 
 #endif

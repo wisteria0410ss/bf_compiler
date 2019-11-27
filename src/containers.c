@@ -23,7 +23,3 @@ void string_push(string *s, char c){
     s->buf[s->cnt++] = c;
     s->buf[s->cnt] = 0;
 }
-
-void string_free(string *s){
-    free(s);
-}

@@ -19,9 +19,6 @@ int main(){
     
     fp_out = stdout;
     generate_asm(fp_out, tree);    
-
-    string_free(source);
-    string_free(tokens);
     
     return 0;
 }
