@@ -20,7 +20,7 @@ clean:
 	rm -f $(OBJS) $(DEPS) $(TARGET)
 
 test: test/test.sh $(TARGET)
-	./$< && echo OK
+	bash -e ./$< && echo OK
 
 .PHONY: all clean test
 

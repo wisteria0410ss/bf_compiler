@@ -14,7 +14,10 @@ void error(int err_type){
         fprintf(stderr, "too many \']\'s.\n");
         break;
     case ERR_FOPEN:
-        fprintf(stderr, "failed to open the output file.\n");
+        fprintf(stderr, "failed to open file.\n");
+        break;
+    case ERR_ARGS:
+        fprintf(stderr, "usage:\n\tbfc [-S] [-o outfile] infile\n");
         break;
     default:
         fprintf(stderr, "unknown error\n");
