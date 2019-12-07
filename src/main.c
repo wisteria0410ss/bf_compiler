@@ -56,7 +56,14 @@ int main(int argc, char **argv){
     tokens = tokenize(source);
     tree = parse(tokens);
     
-    if(fn_output->cnt == 0) fp_out = stdout;
+    if(fn_output->cnt == 0){
+        if(output_asm) fp_out = stdout;
+        else{
+            fp_out = fopen("a.out", "wb");
+            for(int i=0;"a.out"[i];++i) string_push(fn_output, "a.out"[i]);
+        }
+        if(fp_out == NULL) error(ERR_FOPEN);
+    }
     else{
         fp_out = fopen(fn_output->buf, output_asm?"w":"wb");
         if(fp_out == NULL) error(ERR_FOPEN);
