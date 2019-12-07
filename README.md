@@ -9,6 +9,7 @@ x86_64 で Linux な環境で動く実行可能ファイルを吐き出します
 適当なディレクトリで次のコマンドを実行します。
 ```bash
 $ git clone https://github.com/wisteria0410ss/bf_compiler
+$ cd ./bf_compiler/
 $ mkdir bin obj
 $ make
 ```
