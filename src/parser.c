@@ -10,6 +10,10 @@ code_tree *node_new(code_tree *prev, char type){
     code_tree *ct = malloc(sizeof(code_tree));
     if(prev != NULL) prev->next = ct;
     ct->token_type = type;
+    ct->value = 0;
+    ct->next = NULL;
+    ct->child = NULL;
+    
     if(type == '[') ct->code_length = 14;
     else if(type == ',' || type == '.') ct->code_length = 5;
     else if(type == '+' || type == '-') ct->code_length = 2; 

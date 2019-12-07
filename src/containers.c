@@ -32,6 +32,7 @@ code *code_init(){
 
     c->buf = (unsigned char*)malloc(sizeof(unsigned char) * 16);
     if(c->buf == NULL) error(ERR_ALLOC);
+    c->entry = 0;
     c->len = 16;
     c->p = 0;
 
